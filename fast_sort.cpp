@@ -31,22 +31,22 @@ void put_sort(int* massive, int len, bool (*comp)(int*,int*)=&default_comp)
 
 void merge_sort(int* massive, int len, bool (*comp)(int*,int*)=&default_comp)
 {
-    if (len>2)
+    int* massive_dop = new int[len];
+    int d=1,i,j,st,k;
+    while (d<len)
     {
-        merge_sort(massive,len/2,comp);
-        merge_sort(massive+len/2,len-len/2,comp);
-    }
-    if (len<2)
-        return;
-    int i=0, j=len/2;
-    while (i!=j)
-    {
-        if (comp(massive+i,massive+j)) i++;
-        else
+        for (st=0;st<len;st+=2*d)
         {
-            swap(massive+i,massive+j);
-            
+            i=st;
+            j=st+d;
+            for (k=0;k<2*d;k++)
+                if (comp(massive+i,massive+j))
+                    *(massive_dop+k)=*(massive+i++);
+                else
+                    *(massive_dop+k)=*(massive+j++);
         }
+        d<<=1;
+        swap(massive,massive_dop);
     }
-    
 }
+
