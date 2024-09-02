@@ -1,45 +1,45 @@
 #include "../arrays.hpp"
 
-void buble_sort(int* massive, int len, bool (*comp)(int*,int*)=&default_comp)
+void buble_sort(int* array, int len, bool (*comp)(int*,int*)=&default_comp)
 {
     bool is_ready=true;
     for (int k=1;k<len;k++)
     {
         for (int i=0;i<len-k;i++)
-            if (!comp(massive+i,massive+i+1))
+            if (!comp(array+i,array+i+1))
             {
-                swap((massive+i),(massive+i+1)); 
+                swap((array+i),(array+i+1)); 
                 is_ready=false;
             }
         if (is_ready) break;
     }
 }
 
-void choose_sort(int* massive, int len, bool (*comp)(int*,int*)=&default_comp)
+void choose_sort(int* array, int len, bool (*comp)(int*,int*)=&default_comp)
 {
-    for (int i=len-1;i>0;i--)
-        for (int j=0;j<i;j++)
-            if (!comp(massive+i,massive+j))
-                swap(massive+i,massive+j);
+    for (int i=0;i<len;i++)
+        for (int j=i+1;j<len;j++)
+            if (!comp(array+i,array+j))
+                swap(array+i,array+j);
 }
 
-void shaker_sort(int* massive, int len, bool (*comp)(int*,int*)=&default_comp)
+void shaker_sort(int* array, int len, bool (*comp)(int*,int*)=&default_comp)
 {
     bool is_ready=true;
     int l=0,r=len-1,i=0;
     while (r-l>0)
     {
         for (;i<r;i++)
-            if (!comp(massive+i,massive+i+1))
+            if (!comp(array+i,array+i+1))
                 {
-                    swap(massive+i,massive+i+1);
+                    swap(array+i,array+i+1);
                     is_ready=false;
                 }
         r--;
         for (;i>l;i--)
-            if (!comp(massive+i-1,massive+i))
+            if (!comp(array+i-1,array+i))
                 {
-                    swap(massive+i-1,massive+i);
+                    swap(array+i-1,array+i);
                     is_ready=false;
                 }
         l++;
@@ -48,17 +48,19 @@ void shaker_sort(int* massive, int len, bool (*comp)(int*,int*)=&default_comp)
 }
 
 
-void put_sort(int* massive, int len, bool (*comp)(int*,int*)=&default_comp)
+#include<iostream>
+void put_sort(int* array, int len, bool (*comp)(int*,int*)=&default_comp)
 {
     int *p=new int;
     for (int i=1;i<len;i++)
     {
-        *p=*(massive+i);
+        *p=*(array+i);
         for (int j=0;j<i;j++)
-            if (comp(p,massive+j))
+            if (comp(p,array+j))
             {
-                shift_data(massive+j,i-j);
-                swap(p,massive+j);
+                shift_data(array+j,i-j);
+                swap(p,array+j);
+                break;
             }
     }
     delete p;
