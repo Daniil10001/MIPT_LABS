@@ -1,4 +1,5 @@
 #include "arrays.hpp"
+#include <cstring>
 
 
 void comb_sort(int* array, int len, bool (*comp)(int*,int*)=&default_comp)
@@ -28,7 +29,7 @@ void comb_sort(int* array, int len, bool (*comp)(int*,int*)=&default_comp)
     
 }
 
-#include <iostream>
+
 void merge_sort(int* array, int len, bool (*comp)(int*,int*)=&default_comp)
 {
     int* array_dop = new int[len];
@@ -64,28 +65,46 @@ void merge_sort(int* array, int len, bool (*comp)(int*,int*)=&default_comp)
     delete [] array_dop;
 }
 
-void quick_sort(int* array, int len, bool (*comp)(int*,int*)=&default_comp) //not working
+void quick_sort(int* array_s,int start, int len, bool (*comp)(int*,int*), int* array_dop_s, int leni) //not working
 {
-    int* op =array+len/2;
-    int l=0,r=len-1;
-    while (r-l>0)
+    if (len<2) return;
+    int* array=array_s+start;
+    int* array_dop=array_dop_s+start;
+    if (len==2)
     {
-        if (!comp(array+l,op) && !comp(op, array+r))
-        {
-            swap(array+l,array+r);
-        }
-        if (comp(array+l,op)) l++;
-        if (comp(op, array+r)) r--;
-        if (len/2 == l) l++;
-        if (len/2 == r) r--;
+        if(!comp(array,array+1)) swap(array,array+1);
+        return;
     }
-    if (l>r){l--;r++;}
-    if (l==r) swap(array+l,array+l/2);
-    else if (len/2 < l) swap(array+l,array+l/2);
-    else if (len/2 > r) swap(array+r,array+l/2);
-    quick_sort(array, len/2, comp);
-    quick_sort(array+len/2, len-len/2, comp);
+    int l=0,r=len-1;
+    int* op=array+len/2;
+    for (int k=0;k<len;k++)
+    {
+        if (k==len/2) continue;
+        if (comp(array+k,op))
+        {
+            *(array_dop+l)=*(array+k);
+            l++;
+        }
+        else
+        {
+            *(array_dop+r)=*(array+k);
+            r--;
+        }
+    }
+    *(array_dop+l)=*op;
+    std::memcpy(array,array_dop,len*sizeof(int));
+
+    quick_sort(array_s,start, l, comp, array_dop_s, leni);
+    quick_sort(array_s,start+l+1, len-(l+1), comp, array_dop_s, leni);
 }
+
+void quick_sort(int* array, int len, bool (*comp)(int*,int*)=&default_comp)
+{
+    int* array_dop=new int[len];;
+    quick_sort(array,0,len,comp,array_dop,len);
+    delete [] array_dop;
+}
+
 
 void heap_sort(int* array, int len, bool (*comp)(int*,int*)=&default_comp)
 {

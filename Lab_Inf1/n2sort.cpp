@@ -48,7 +48,7 @@ void shaker_sort(int* array, int len, bool (*comp)(int*,int*)=&default_comp)
 }
 
 
-#include<iostream>
+
 void put_sort(int* array, int len, bool (*comp)(int*,int*)=&default_comp)
 {
     int *p=new int;

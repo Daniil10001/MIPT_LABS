@@ -1,20 +1,18 @@
 #include <fstream>
 #include <iostream>
 #include <chrono>
+#include <random>
 #include "n2sort.hpp"
 #include "../fast_sort.hpp"
 
-int main()
-{
-    int array[]={1,2,3,4,5,9,8,7,6,0};
-    merge_sort(array,10);
-    
-    for (int j=0;j<10;j++)
-        std::cout << array[j] << ' ';
-        std::cout<<'\n';
-    return 0;
-}
 
+
+int rand_uns(int min, int max) {
+    unsigned seed = std::chrono::steady_clock::now().time_since_epoch().count();
+    static std::default_random_engine e(seed);
+    std::uniform_int_distribution<int> d(min, max);
+    return d(e);
+}
 
 bool test_result(int* array, int len)
 {
@@ -29,7 +27,6 @@ bool test_result(int* array, int len)
 
 std::chrono::duration<double> timer(int* (*my_sort)(int*,int), int* array, int len)
 {
-    int* result;
     auto start = std::chrono::high_resolution_clock::now();
     my_sort(array, len);
     auto end = std::chrono::high_resolution_clock::now();
@@ -37,4 +34,17 @@ std::chrono::duration<double> timer(int* (*my_sort)(int*,int), int* array, int l
         return start-end;
     else
         return std::chrono::duration<double>::zero();
+}
+
+int main()
+{
+    int array[]={1,2,3,9,5,9,8,7,6};
+    for (int i=0;i<9;i++) array[i]=rand_uns(0,9);
+    for (int j=0;j<9;j++) std::cout << array[j] << ' ';
+        std::cout<<'\n';
+    quick_sort(array,9);
+    
+    for (int j=0;j<9;j++) std::cout << array[j] << ' ';
+        std::cout<<'\n';
+    return 0;
 }
