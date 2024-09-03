@@ -3,7 +3,7 @@
 
 void swap(int* p1,int* p2);
 
-void swap_p(int* p1,int* p2);
+void swap_p(int** p1,int** p2);
 
 void shift_data(int* start, int len, int k=1);
 

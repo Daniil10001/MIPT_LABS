@@ -1,14 +1,17 @@
 #define ull unsigned long long int
 
-void swap_p(int* p1,int* p2)
+void swap_p(int** p1,int** p2)
 {
-    int* p3=p1;
-    p1=p2;
-    p2=p3;
+    int** p3;
+    if (*p1==*p2) return;
+    *p1=(int*)((ull)*p1^(ull)*p2);
+    *p2=(int*)((ull)*p1^(ull)*p2);
+    *p1=(int*)((ull)*p1^(ull)*p2);
 }
 
 void swap(int* p1,int* p2)
 {
+    if (*p1==*p2) return;
     *p1=*p2^*p1;
     *p2=*p2^*p1;
     *p1=*p2^*p1;

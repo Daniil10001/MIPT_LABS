@@ -59,10 +59,7 @@ void merge_sort(int* array, int len, bool (*comp)(int*,int*)=&default_comp)
             }
         }
         d<<=1;
-        swap_p(array,array_dop); //not working 
-        for (int j=0;j<10;j++)
-        std::cout << array[j] << ' ';
-        std::cout<<'\n';
+        swap_p(&array,&array_dop); //not working 
     }
     delete [] array_dop;
 }
