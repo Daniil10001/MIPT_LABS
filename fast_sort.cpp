@@ -60,12 +60,12 @@ void merge_sort(int* array, int len, bool (*comp)(int*,int*)=&default_comp)
             }
         }
         d<<=1;
-        swap_p(&array,&array_dop); 
+        std::memcpy(array,array_dop,len*sizeof(int));//swap_p(&array,&array_dop); 
     }
     delete [] array_dop;
 }
 
-void quick_sort(int* array_s,int start, int len, bool (*comp)(int*,int*), int* array_dop_s, int leni) //not working
+void quick_sort(int* array_s,int start, int len, bool (*comp)(int*,int*), int* array_dop_s, int leni) 
 {
     if (len<2) return;
     int* array=array_s+start;
@@ -92,7 +92,7 @@ void quick_sort(int* array_s,int start, int len, bool (*comp)(int*,int*), int* a
         }
     }
     *(array_dop+l)=*op;
-    std::memcpy(array,array_dop,len*sizeof(int));
+    std::memcpy(array,array_dop,((unsigned long long)len)*sizeof(int));
 
     quick_sort(array_s,start, l, comp, array_dop_s, leni);
     quick_sort(array_s,start+l+1, len-(l+1), comp, array_dop_s, leni);
@@ -108,9 +108,11 @@ void quick_sort(int* array, int len, bool (*comp)(int*,int*)=&default_comp)
 
 void heap_sort(int* array, int len, bool (*comp)(int*,int*)=&default_comp)
 {
+    heap(array,len,comp);
+    
     for (int i=len;i>1;i--)
     {
-        heap(array,i,comp);
+        update_heap(array,i,comp);
         swap(array,array+i-1);
     }
 }

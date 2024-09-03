@@ -2,8 +2,11 @@
 #include <iostream>
 #include <chrono>
 #include <random>
+#include <string>
+#include <climits>
 #include "n2sort.hpp"
 #include "../fast_sort.hpp"
+
 
 
 
@@ -38,13 +41,22 @@ std::chrono::duration<double> timer(int* (*my_sort)(int*,int), int* array, int l
 
 int main()
 {
-    int array[]={1,2,3,9,5,9,8,7,6};
-    for (int i=0;i<9;i++) array[i]=rand_uns(0,9);
-    for (int j=0;j<9;j++) std::cout << array[j] << ' ';
-        std::cout<<'\n';
-    quick_sort(array,9);
-    
-    for (int j=0;j<9;j++) std::cout << array[j] << ' ';
-        std::cout<<'\n';
+    int n_sorts=8;
+    void (* sort [])(int*, int, bool(int*,int*))={&heap_sort,&merge_sort, &quick_sort, &comb_sort,
+                                                     &buble_sort,&choose_sort,&shaker_sort,&put_sort};
+    int limits[]={2000000,2000000,2000000,100,100,100,100,100};
+    int k_tests=10;
+    std::string names[]={"heap_sort","merge_sort", "quick_sort", "comb_sort",
+                            "buble_sort","choose_sort","shaker_sort","put_sort"};
+    int array[2000000];
+    for (int srt=0;srt<n_sorts;srt++){
+        for (int i=0;i<limits[srt];i++) array[i]=rand_uns(INT16_MIN,INT16_MAX);
+        sort[srt](array,limits[srt],default_comp);
+        if (test_result(array,limits[srt])) std::cout<<"ok"<<std::endl;
+        else{
+            for (int i=0;i<limits[srt];i++) std::cout<<array[i]<<' ';
+            std::cout<<std::endl<<names[srt]<<std::endl;
+        }
+    }
     return 0;
 }
