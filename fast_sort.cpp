@@ -59,7 +59,7 @@ void merge_sort(int* array, int len, bool (*comp)(int*,int*)=&default_comp)
             }
         }
         d<<=1;
-        swap_p(&array,&array_dop); //not working 
+        swap_p(&array,&array_dop); 
     }
     delete [] array_dop;
 }
