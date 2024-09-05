@@ -23,10 +23,19 @@ void shift_data(int* start, int len, int k=1)
     }
 }
 
+
 bool default_comp(int* p1, int* p2)
 {
-    return *p1<*p2;
+    return *p1<=*p2;
 }
+
+bool(*comp_function)(int*,int*)=&default_comp;
+
+bool compare(int* p1,int* p2)
+{
+    return comp_function(p1,p2)||( *p1 == *p2 );
+}
+
 
 void update_heap(int* array, int len, bool (*comp)(int*,int*)=&default_comp, int head=0,bool reverse=false)
 {

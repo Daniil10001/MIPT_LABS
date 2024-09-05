@@ -5,6 +5,7 @@ void buble_sort(int* array, int len, bool (*comp)(int*,int*)=&default_comp)
     bool is_ready=true;
     for (int k=1;k<len;k++)
     {
+        is_ready=true;
         for (int i=0;i<len-k;i++)
             if (!comp(array+i,array+i+1))
             {

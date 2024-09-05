@@ -13,4 +13,6 @@ void heap(int* array, int len, bool (*comp)(int*,int*)=&default_comp, int head=0
 
 void update_heap(int* array, int len, bool (*comp)(int*,int*)=&default_comp, int head=0,bool reverse=false);
 
+bool compare(int* p1,int* p2);
+
 #endif

@@ -4,7 +4,7 @@
 
 void comb_sort(int* array, int len, bool (*comp)(int*,int*)=&default_comp)
 {
-    int d=len-1;
+    int d=len/2;
     bool is_ready=true;
     while (d>1)
     {
@@ -15,13 +15,14 @@ void comb_sort(int* array, int len, bool (*comp)(int*,int*)=&default_comp)
             }
         d>>=1;
     }
+    d=1;
     while (true)
     {
         is_ready=true;
-        for (int i=0;i<len-d;i++)
-            if (!comp(array+i,array+i+d))
+        for (int i=0;i<len-1;i++)
+            if (!comp(array+i,array+i+1))
             {
-                swap((array+i),(array+i+d));
+                swap((array+i),(array+i+1));
                 is_ready=false;
             }
         if (is_ready) break;
