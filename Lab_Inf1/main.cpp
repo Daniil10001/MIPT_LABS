@@ -44,9 +44,9 @@ int main()
     int n_sorts=8;
     void (* sort [])(int*, int, bool(int*,int*))={&heap_sort,&merge_sort, &quick_sort, &comb_sort,
                                                      &buble_sort,&choose_sort,&shaker_sort,&put_sort};
-    int limits[]={200000,200000,200000,50000,20000,20000,20000,20000};
-    int k_tests=10;
-    int points=1000;
+    int limits[]={10000,10000,10000,10000,10000,10000,10000,10000};//{200000,200000,200000,10000,10000,10000,10000,10000};
+    int k_tests=100;
+    int points=100;
     std::fstream file;
     file.open("data_of_sort.csv");
     std::string names[]={"heap_sort","merge_sort", "quick_sort", "comb_sort",
