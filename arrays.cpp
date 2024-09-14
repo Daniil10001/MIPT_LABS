@@ -39,9 +39,24 @@ bool compare(int* p1,int* p2)
 
 void update_heap(int* array, int len, bool (*comp)(int*,int*)=&default_comp, int head=0,bool reverse=false)
 {
-    if (head*2+1<len && head*2+2<len)
+    /*if (head*2+1<len && head*2+2<len)
         if ((comp(array+head,array+head*2+1) ^ reverse) && (comp(array+head,array+head*2+2) ^ reverse))
         {
+        }*/
+    if (head>len) return;
+    bool a=false,b=false;
+    if (head*2+1<len)
+        if (comp(array+head,array+head*2+1) ^ reverse)
+        {
+            a=true;
+        }
+    if (head*2+2<len)
+        if (comp(array+head,array+head*2+2) ^ reverse)
+        {
+            b=true;
+        }
+    if (a==b && a==true)
+    {
             if (comp(array+head*2+2,array+head*2+1) ^ reverse)
             {
                 swap(array+head,array+head*2+1);
@@ -52,20 +67,19 @@ void update_heap(int* array, int len, bool (*comp)(int*,int*)=&default_comp, int
                 swap(array+head,array+head*2+2);
                 update_heap(array,len,comp,head*2+2);
             }
-        }
-    if (head>len) return;
-    if (head*2+1<len)
-        if (comp(array+head,array+head*2+1) ^ reverse)
-        {
-            swap(array+head,array+head*2+1);
-            update_heap(array,len,comp,head*2+1);
-        }
-    if (head*2+2<len)
-        if (comp(array+head,array+head*2+2) ^ reverse)
-        {
-            swap(array+head,array+head*2+2);
-            update_heap(array,len,comp,head*2+2);
-        }
+            return;
+    }
+    if (a)
+    {
+        swap(array+head,array+head*2+1);
+        update_heap(array,len,comp,head*2+1);
+    }
+    if (b)
+    {
+        swap(array+head,array+head*2+2);
+        update_heap(array,len,comp,head*2+2);
+    }
+    
 }
 
 void heap(int* array, int len, bool (*comp)(int*,int*)=&default_comp, int head=0,bool reverse=false)
