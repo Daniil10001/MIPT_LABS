@@ -39,17 +39,18 @@ std::chrono::duration<double> timer(void (*my_sort)(int*, int, bool(int*,int*)),
         return std::chrono::duration<double>::zero();
 }
 
-unsigned long int limits[]={1000000,1000000,1000000,100,100,100,100,100};
+unsigned long int limits[]={50000,50000,50000,1000,1000,1000,1000,1000};
+//{1000000,1000000,1000000,100,100,100,100,100};
 int array[200000000];
 unsigned long  len;
 int main()
 {
-    int n_sorts=3;
+    int n_sorts=8;
     void (* sort [])(int*, int, bool(int*,int*))={&heap_sort,&merge_sort, &quick_sort, &comb_sort,
                                                      &buble_sort,&choose_sort,&shaker_sort,&put_sort};
     //{200000,200000,200000,10000,10000,10000,10000,10000};
     int k_tests=2;
-    unsigned long  points=10000;
+    unsigned long  points=500;
     std::fstream file;
     file.open("data_of_sort.csv");
     std::string names[]={"heap_sort","merge_sort", "quick_sort", "comb_sort",
