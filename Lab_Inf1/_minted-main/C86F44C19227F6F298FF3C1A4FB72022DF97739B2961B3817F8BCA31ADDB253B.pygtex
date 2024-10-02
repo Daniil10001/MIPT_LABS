@@ -1,0 +1,41 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{quick\PYGZus{}sort}\PYG{p}{(}\PYG{k+kt}{int}\PYG{o}{*}\PYG{+w}{ }\PYG{n}{array\PYGZus{}s}\PYG{p}{,}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{start}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{len}\PYG{p}{,}
+\PYG{+w}{        }\PYG{k+kt}{bool}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{*}\PYG{n}{comp}\PYG{p}{)(}\PYG{k+kt}{int}\PYG{o}{*}\PYG{p}{,}\PYG{k+kt}{int}\PYG{o}{*}\PYG{p}{),}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{o}{*}\PYG{+w}{ }\PYG{n}{array\PYGZus{}dop\PYGZus{}s}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{leni}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{len}\PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{o}{*}\PYG{+w}{ }\PYG{n}{array}\PYG{o}{=}\PYG{n}{array\PYGZus{}s}\PYG{o}{+}\PYG{n}{start}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{o}{*}\PYG{+w}{ }\PYG{n}{array\PYGZus{}dop}\PYG{o}{=}\PYG{n}{array\PYGZus{}dop\PYGZus{}s}\PYG{o}{+}\PYG{n}{start}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{len}\PYG{o}{==}\PYG{l+m+mi}{2}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{if}\PYG{p}{(}\PYG{o}{!}\PYG{n}{comp}\PYG{p}{(}\PYG{n}{array}\PYG{p}{,}\PYG{n}{array}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{))}\PYG{+w}{ }\PYG{n}{swap}\PYG{p}{(}\PYG{n}{array}\PYG{p}{,}\PYG{n}{array}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{l}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{r}\PYG{o}{=}\PYG{n}{len}\PYG{l+m+mi}{\PYGZhy{}1}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{o}{*}\PYG{+w}{ }\PYG{n}{op}\PYG{o}{=}\PYG{n}{array}\PYG{o}{+}\PYG{n}{len}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{k}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{k}\PYG{o}{\PYGZlt{}}\PYG{n}{len}\PYG{p}{;}\PYG{n}{k}\PYG{o}{++}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{k}\PYG{o}{==}\PYG{n}{len}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{continue}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{comp}\PYG{p}{(}\PYG{n}{array}\PYG{o}{+}\PYG{n}{k}\PYG{p}{,}\PYG{n}{op}\PYG{p}{))}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{o}{*}\PYG{p}{(}\PYG{n}{array\PYGZus{}dop}\PYG{o}{+}\PYG{n}{l}\PYG{p}{)}\PYG{o}{=*}\PYG{p}{(}\PYG{n}{array}\PYG{o}{+}\PYG{n}{k}\PYG{p}{);}
+\PYG{+w}{            }\PYG{n}{l}\PYG{o}{++}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{k}{else}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{o}{*}\PYG{p}{(}\PYG{n}{array\PYGZus{}dop}\PYG{o}{+}\PYG{n}{r}\PYG{p}{)}\PYG{o}{=*}\PYG{p}{(}\PYG{n}{array}\PYG{o}{+}\PYG{n}{k}\PYG{p}{);}
+\PYG{+w}{            }\PYG{n}{r}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{o}{*}\PYG{p}{(}\PYG{n}{array\PYGZus{}dop}\PYG{o}{+}\PYG{n}{l}\PYG{p}{)}\PYG{o}{=*}\PYG{n}{op}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{std}\PYG{o}{::}\PYG{n}{memcpy}\PYG{p}{(}\PYG{n}{array}\PYG{p}{,}\PYG{n}{array\PYGZus{}dop}\PYG{p}{,((}\PYG{k+kt}{unsigned}\PYG{+w}{ }\PYG{k+kt}{long}\PYG{+w}{ }\PYG{k+kt}{long}\PYG{p}{)}\PYG{n}{len}\PYG{p}{)}\PYG{o}{*}\PYG{k}{sizeof}\PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{));}
+\PYG{+w}{    }\PYG{n}{quick\PYGZus{}sort}\PYG{p}{(}\PYG{n}{array\PYGZus{}s}\PYG{p}{,}\PYG{n}{start}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{l}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{comp}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{array\PYGZus{}dop\PYGZus{}s}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{leni}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{quick\PYGZus{}sort}\PYG{p}{(}\PYG{n}{array\PYGZus{}s}\PYG{p}{,}\PYG{n}{start}\PYG{o}{+}\PYG{n}{l}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{len}\PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{n}{l}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{comp}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{array\PYGZus{}dop\PYGZus{}s}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{leni}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{quick\PYGZus{}sort}\PYG{p}{(}\PYG{k+kt}{int}\PYG{o}{*}\PYG{+w}{ }\PYG{n}{array}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{len}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{bool}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{*}\PYG{n}{comp}\PYG{p}{)(}\PYG{k+kt}{int}\PYG{o}{*}\PYG{p}{,}\PYG{k+kt}{int}\PYG{o}{*}\PYG{p}{)}\PYG{o}{=\PYGZam{}}\PYG{n}{default\PYGZus{}comp}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{o}{*}\PYG{+w}{ }\PYG{n}{array\PYGZus{}dop}\PYG{o}{=}\PYG{k}{new}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{p}{[}\PYG{n}{len}\PYG{p}{];;}
+\PYG{+w}{    }\PYG{n}{quick\PYGZus{}sort}\PYG{p}{(}\PYG{n}{array}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{len}\PYG{p}{,}\PYG{n}{comp}\PYG{p}{,}\PYG{n}{array\PYGZus{}dop}\PYG{p}{,}\PYG{n}{len}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k}{delete}\PYG{+w}{ }\PYG{p}{[]}\PYG{+w}{ }\PYG{n}{array\PYGZus{}dop}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

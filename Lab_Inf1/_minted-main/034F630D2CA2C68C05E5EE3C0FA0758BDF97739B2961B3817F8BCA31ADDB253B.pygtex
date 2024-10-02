@@ -1,0 +1,23 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{srt}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{srt}\PYG{o}{\PYGZlt{}}\PYG{n}{n\PYGZus{}sorts}\PYG{p}{;}\PYG{n}{srt}\PYG{o}{++}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{unsigned}\PYG{+w}{ }\PYG{k+kt}{long}\PYG{+w}{  }\PYG{n}{p}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{n}{p}\PYG{o}{\PYGZlt{}=}\PYG{n}{points}\PYG{p}{;}\PYG{n}{p}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{k}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{k}\PYG{o}{\PYGZlt{}}\PYG{n}{k\PYGZus{}tests}\PYG{p}{;}\PYG{n}{k}\PYG{o}{++}\PYG{p}{)}
+\PYG{+w}{            }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                }\PYG{n}{len}\PYG{o}{=}\PYG{p}{(}\PYG{n}{limits}\PYG{p}{[}\PYG{n}{srt}\PYG{p}{]}\PYG{o}{*}\PYG{n}{p}\PYG{p}{)}\PYG{o}{/}\PYG{n}{points}\PYG{p}{;}
+\PYG{+w}{                }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{unsigned}\PYG{+w}{ }\PYG{k+kt}{long}\PYG{+w}{  }\PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{len}\PYG{p}{;}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{array}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{=}
+\PYG{+w}{                               }\PYG{n}{rand\PYGZus{}uns}\PYG{p}{(}\PYG{n}{INT16\PYGZus{}MIN}\PYG{p}{,}\PYG{n}{INT16\PYGZus{}MAX}\PYG{p}{);}
+\PYG{+w}{                }\PYG{c+c1}{//sort[srt](array,len,\PYGZam{}default\PYGZus{}comp);}
+\PYG{+w}{                }\PYG{n}{file}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{n}{names}\PYG{p}{[}\PYG{n}{srt}\PYG{p}{]}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{l+s+sc}{\PYGZsq{},\PYGZsq{}}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{n}{len}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{l+s+sc}{\PYGZsq{},\PYGZsq{}}\PYG{o}{\PYGZlt{}\PYGZlt{}}
+\PYG{+w}{                      }\PYG{n}{timer}\PYG{p}{(}\PYG{n}{sort}\PYG{p}{[}\PYG{n}{srt}\PYG{p}{],}\PYG{n}{array}\PYG{p}{,}\PYG{n}{len}\PYG{p}{).}\PYG{n}{count}\PYG{p}{()}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{l+s+sc}{\PYGZsq{}\PYGZbs{}n\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{file}\PYG{p}{.}\PYG{n}{flush}\PYG{p}{();}
+\PYG{+w}{                }\PYG{c+c1}{//if (test\PYGZus{}result(array,len))}
+\PYG{+w}{                }\PYG{c+c1}{//else continue;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{n}{std}\PYG{o}{::}\PYG{n}{flush}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{cout}\PYG{p}{);}
+\PYG{+w}{            }\PYG{n}{std}\PYG{o}{::}\PYG{n}{cout}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{l+s+sc}{\PYGZsq{}\PYGZbs{}r\PYGZsq{}}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{l+s}{\PYGZdq{}                                     \PYGZdq{}}
+\PYG{+w}{                         }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{l+s+sc}{\PYGZsq{}\PYGZbs{}r\PYGZsq{}}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{n}{names}\PYG{p}{[}\PYG{n}{srt}\PYG{p}{]}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{l+s}{\PYGZdq{} \PYGZdq{}}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{n}{p}\PYG{o}{/}\PYG{p}{(}\PYG{n}{points}\PYG{o}{+}\PYG{l+m+mf}{.0}\PYG{p}{)}\PYG{o}{*}\PYG{l+m+mi}{100}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{l+s+sc}{\PYGZsq{}\PYGZpc{}\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{n}{std}\PYG{o}{::}\PYG{n}{cout}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{n}{std}\PYG{o}{::}\PYG{n}{endl}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

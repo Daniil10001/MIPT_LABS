@@ -1,0 +1,25 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{shaker\PYGZus{}sort}\PYG{p}{(}\PYG{k+kt}{int}\PYG{o}{*}\PYG{+w}{ }\PYG{n}{array}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{len}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{bool}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{*}\PYG{n}{comp}\PYG{p}{)(}\PYG{k+kt}{int}\PYG{o}{*}\PYG{p}{,}\PYG{k+kt}{int}\PYG{o}{*}\PYG{p}{)}\PYG{o}{=\PYGZam{}}\PYG{n}{default\PYGZus{}comp}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k+kt}{bool}\PYG{+w}{ }\PYG{n}{is\PYGZus{}ready}\PYG{o}{=}\PYG{n+nb}{true}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{l}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{r}\PYG{o}{=}\PYG{n}{len}\PYG{l+m+mi}{\PYGZhy{}1}\PYG{p}{,}\PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{while}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{r}\PYG{o}{\PYGZhy{}}\PYG{n}{l}\PYG{o}{\PYGZgt{}}\PYG{l+m+mi}{0}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{r}\PYG{p}{;}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{!}\PYG{n}{comp}\PYG{p}{(}\PYG{n}{array}\PYG{o}{+}\PYG{n}{i}\PYG{p}{,}\PYG{n}{array}\PYG{o}{+}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{))}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n}{swap}\PYG{p}{(}\PYG{n}{array}\PYG{o}{+}\PYG{n}{i}\PYG{p}{,}\PYG{n}{array}\PYG{o}{+}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{+w}{                    }\PYG{n}{is\PYGZus{}ready}\PYG{o}{=}\PYG{n+nb}{false}\PYG{p}{;}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{n}{r}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(;}\PYG{n}{i}\PYG{o}{\PYGZgt{}}\PYG{n}{l}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)}
+\PYG{+w}{            }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{!}\PYG{n}{comp}\PYG{p}{(}\PYG{n}{array}\PYG{o}{+}\PYG{n}{i}\PYG{l+m+mi}{\PYGZhy{}1}\PYG{p}{,}\PYG{n}{array}\PYG{o}{+}\PYG{n}{i}\PYG{p}{))}
+\PYG{+w}{                }\PYG{p}{\PYGZob{}}
+\PYG{+w}{                    }\PYG{n}{swap}\PYG{p}{(}\PYG{n}{array}\PYG{o}{+}\PYG{n}{i}\PYG{l+m+mi}{\PYGZhy{}1}\PYG{p}{,}\PYG{n}{array}\PYG{o}{+}\PYG{n}{i}\PYG{p}{);}
+\PYG{+w}{                    }\PYG{n}{is\PYGZus{}ready}\PYG{o}{=}\PYG{n+nb}{false}\PYG{p}{;}
+\PYG{+w}{                }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{n}{l}\PYG{o}{++}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{is\PYGZus{}ready}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{break}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -7,3 +7,4 @@ add_compile_options(-fopenmp -O2)
 add_compile_options(-Wall -Wall)
 
 add_executable( main main.cpp n2sort.cpp ../arrays.cpp ../fast_sort.cpp)
+add_executable( rsch comb_r.cpp n2sort.cpp ../arrays.cpp ../fast_sort.cpp)

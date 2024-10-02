@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{std}\PYG{o}{::}\PYG{n}{chrono}\PYG{o}{::}\PYG{n}{duration}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{double}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{timer}\PYG{p}{(}\PYG{k+kt}{void}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{*}\PYG{n}{my\PYGZus{}sort}\PYG{p}{)(}\PYG{k+kt}{int}\PYG{o}{*}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{bool}\PYG{p}{(}\PYG{k+kt}{int}\PYG{o}{*}\PYG{p}{,}\PYG{k+kt}{int}\PYG{o}{*}\PYG{p}{)),}
+\PYG{+w}{      }\PYG{k+kt}{int}\PYG{o}{*}\PYG{+w}{ }\PYG{n}{array}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{len}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{bool}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{*}\PYG{n}{comp}\PYG{p}{)(}\PYG{k+kt}{int}\PYG{o}{*}\PYG{p}{,}\PYG{k+kt}{int}\PYG{o}{*}\PYG{p}{)}\PYG{o}{=\PYGZam{}}\PYG{n}{default\PYGZus{}comp}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{auto}\PYG{+w}{ }\PYG{n}{start}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{chrono}\PYG{o}{::}\PYG{n}{high\PYGZus{}resolution\PYGZus{}clock}\PYG{o}{::}\PYG{n}{now}\PYG{p}{();}
+\PYG{+w}{    }\PYG{n}{my\PYGZus{}sort}\PYG{p}{(}\PYG{n}{array}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{len}\PYG{p}{,}\PYG{n}{comp}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k}{auto}\PYG{+w}{ }\PYG{n}{end}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{chrono}\PYG{o}{::}\PYG{n}{high\PYGZus{}resolution\PYGZus{}clock}\PYG{o}{::}\PYG{n}{now}\PYG{p}{();}
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{test\PYGZus{}result}\PYG{p}{(}\PYG{n}{array}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{len}\PYG{p}{))}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{end}\PYG{o}{\PYGZhy{}}\PYG{n}{start}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k}{else}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{std}\PYG{o}{::}\PYG{n}{chrono}\PYG{o}{::}\PYG{n}{duration}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{double}\PYG{o}{\PYGZgt{}::}\PYG{n}{zero}\PYG{p}{();}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

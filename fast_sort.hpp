@@ -6,6 +6,8 @@
 
 void comb_sort(int* array, int len, bool (*comp)(int*,int*)=&default_comp);
 
+void comb_sort(int* array, int len, bool (*comp)(int*,int*)=&default_comp, double factor=2.);
+
 void merge_sort(int* array, int len, bool (*comp)(int*,int*)=&default_comp);
 
 void quick_sort(int* array, int len, bool (*comp)(int*,int*)=&default_comp);
